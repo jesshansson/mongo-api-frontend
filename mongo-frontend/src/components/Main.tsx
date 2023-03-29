@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '../api';
+import { fetchData } from '../utils/api';
 import styled from "styled-components/macro";
 import { Link } from 'react-router-dom';
+import { Title } from './Globalstyles';
 
 export const Main = () => {
 
@@ -31,18 +32,13 @@ export const Main = () => {
 }
 
 const Wrap = styled.div`
-margin: 20px;
-padding: 20px;
-background-color: #FCF8E8;
-border-radius: 10px;
-display: flex;
-flex-direction: column;`
-
-const Title = styled.h1`
-text-align: center;
-font-size: 50px;
-font-family: 'Delicious Handrawn', cursive;
-font-weight: 400`
+  margin: 20px;
+  padding: 20px;
+  background-color: #FCF8E8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -52,4 +48,4 @@ const StyledLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
-  `
+`

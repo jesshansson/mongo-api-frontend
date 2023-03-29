@@ -1,5 +1,4 @@
 import React from 'react';
-//import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Dancing } from './components/Dancing';
 import { Happy } from './components/Happy';

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from "styled-components/macro";
+import { BASE_URL } from '../utils/utils';
+import { Title } from './Globalstyles';
 
 interface Song {
   _id: string;
@@ -16,7 +18,7 @@ export const HappyDancing: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("https://project-mongo-api-fkbbu5sbga-lz.a.run.app/songs/happydancing")
+      .get(`${BASE_URL}/songs/happydancing`)
       .then((response) => {
         setSongs(response.data);
       })
@@ -40,22 +42,18 @@ export const HappyDancing: React.FC = () => {
       ))}
     </div>
   );
-      }
+}
 
 const Wrap = styled.div`
-margin: 20px 30px;
-padding: 20px;
-background-color: #FCF8E8;
-border-radius: 10px;`
+  margin: 20px 30px;
+  padding: 20px;
+  background-color: #FCF8E8;
+  border-radius: 10px;
+`
 
 const Bold = styled.p`
-font-weight: 500;
-font-family: 'Delicious Handrawn', cursive;
-font-size: 20px;
-margin: 5px 0px;`
-
-const Title = styled.h1`
-text-align: center;
-font-size: 50px;
-font-family: 'Delicious Handrawn', cursive;
-font-weight: 400`
+  font-weight: 500;
+  font-family: 'Delicious Handrawn', cursive;
+  font-size: 20px;
+  margin: 5px 0px;
+`
