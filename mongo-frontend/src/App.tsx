@@ -1,41 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 //import axios from 'axios';
-import { fetchData } from './api';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Dancing } from './components/Dancing';
+import { Main } from './components/Main';
 
-function App() {
-  const [data, setData] = useState<any>(null);
 
-  /*
-  useEffect(() => {
-    axios.get('https://project-mongo-api-fkbbu5sbga-lz.a.run.app')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);*/
+  const App = () => {
+    return (
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/dancing" element={<Dancing />} />
+            <Route path="*" element={<Navigate to="/404" />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    )
+  }
 
-  useEffect(() => {
-    async function getData() {
-      const result = await fetchData();
-      setData(result);
-    }
-
-    getData();
-  }, []);
-
-  return (
-    <div>
-      <h1>My App</h1>
-      {data && (
-        <div>
-          <p>Data from API:</p>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default App;
+  export default App;
