@@ -20,8 +20,10 @@ export const Main = () => {
       <Title>Hello and welcome to your Spotify database!</Title>
       {data && (
         <Wrap>
-          <StyledLink to="/happy">See happy songs here</StyledLink>
-          <StyledLink to="/dancing">See dance-friendly songs here</StyledLink>
+          <StyledLink to="/songs">⭐ See all songs in database 🎵</StyledLink>
+          <StyledLink to="/happy">⭐ See happy songs  ✨</StyledLink>
+          <StyledLink to="/dancing">⭐ See dance-friendly songs  💃</StyledLink>
+          <StyledLink to="/happydancing">⭐ See happy songs great for dancing  ✌️</StyledLink>
         </Wrap>
       )}
     </div>
@@ -46,6 +48,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
   margin: 10px;
+
   &:hover {
     text-decoration: underline;
   }
