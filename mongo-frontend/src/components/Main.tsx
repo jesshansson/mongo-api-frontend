@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from 'react';
-//import axios from 'axios';
 import { fetchData } from '../api';
+import styled from "styled-components/macro";
+import { Link } from 'react-router-dom';
 
 export const Main = () => {
+
   const [data, setData] = useState<any>(null);
-
-  /*
-  useEffect(() => {
-    axios.get('https://project-mongo-api-fkbbu5sbga-lz.a.run.app')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);*/
-
   useEffect(() => {
     async function getData() {
       const result = await fetchData();
@@ -27,13 +17,36 @@ export const Main = () => {
 
   return (
     <div>
-      <h1>Hello and welcome to your Spotify database!</h1>
+      <Title>Hello and welcome to your Spotify database!</Title>
       {data && (
-        <div>
-          <p>Data from API:</p>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
+        <Wrap>
+          <StyledLink to="/happy">See happy songs here</StyledLink>
+          <StyledLink to="/dancing">See dance-friendly songs here</StyledLink>
+        </Wrap>
       )}
     </div>
   );
 }
+
+const Wrap = styled.div`
+margin: 20px;
+padding: 20px;
+background-color: #FCF8E8;
+border-radius: 10px;
+display: flex;
+flex-direction: column;`
+
+const Title = styled.h1`
+text-align: center;
+font-size: 50px;
+font-family: 'Delicious Handrawn', cursive;
+font-weight: 400`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  margin: 10px;
+  &:hover {
+    text-decoration: underline;
+  }
+  `

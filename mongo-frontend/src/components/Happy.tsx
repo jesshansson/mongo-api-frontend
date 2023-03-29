@@ -4,19 +4,18 @@ import styled from "styled-components/macro";
 
 interface Song {
   _id: string;
-  danceability: number;
+  valence: number;
   bpm: number;
   artistName: string;
-
   trackName: string;
 }
 
-export const Dancing: React.FC = () => {
+export const Happy: React.FC = () => {
   const [songs, setSongs] = useState<Song[]>([]);
 
   useEffect(() => {
     axios
-      .get("https://project-mongo-api-fkbbu5sbga-lz.a.run.app/songs/dancing")
+      .get("https://project-mongo-api-fkbbu5sbga-lz.a.run.app/songs/happy")
       .then((response) => {
         setSongs(response.data);
       })
@@ -27,13 +26,13 @@ export const Dancing: React.FC = () => {
 
   return (
     <div>
-      <Title>Dance-friendly songs!</Title>
+      <Title>Happy songs!</Title>
       {songs.map((song) => (
         <Wrap>
         <div key={song._id}>
           <p><Bold>Trackname:</Bold> {song.trackName}</p>
           <p><Bold>Artist:</Bold> {song.artistName}</p>
-          <p><Bold>Level of danceability (0-100):</Bold> {song.danceability}</p>
+          <p><Bold>Level of happiness (0-100):</Bold> {song.valence}</p>
           <p><Bold>Bpm:</Bold> {song.bpm}</p>
         </div>
         </Wrap>
@@ -43,7 +42,7 @@ export const Dancing: React.FC = () => {
       }
 
 const Wrap = styled.div`
-margin: 20px;
+margin: 20px 30px;
 padding: 20px;
 background-color: #FCF8E8;
 border-radius: 10px;`
